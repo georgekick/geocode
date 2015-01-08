@@ -18,16 +18,16 @@ if (length(address) < as.numeric(geocodeQueryCheck())){
   data <- cbind(data, address)
 
   # output a geocoded table
-  write.table(data, paste("geocoded_", basename(svalue(browse.file)), "_", Sys.Date(),".csv", sep=""), col.names=TRUE, row.names=FALSE, sep=",")
+  output.file.name <- gsub("(.*).csv", ("\\1"), basename(svalue(browse.file)))
+
+  write.table(data, paste(output.file.name, "_", "_geocoded_", Sys.Date(),".csv", sep=""), col.names=TRUE, row.names=FALSE, sep=",")
 
   # make spatial data frame
   spdf <- SpatialPointsDataFrame(coords=cbind(address$lon, address$lat), 
                               proj4string=CRS("+init=epsg:4326"),
                               data=data)
 
-  shp.name <- gsub("(.*).csv", ("\\1"), basename(svalue(browse.file)))
-  
-  writeOGR(spdf, ".", layer=paste(shp.name, "_geocoded", sep=""), "ESRI Shapefile")
+  writeOGR(spdf, ".", layer=paste(output.file.name, "_geocoded", sep=""), "ESRI Shapefile")
 
   
   # ending message ----
