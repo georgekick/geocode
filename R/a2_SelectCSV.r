@@ -69,7 +69,7 @@ grp.load.data <- gbutton(text="Load data", container = DataGroup,
 	next.button <- gbutton("Next", cont=NextGroup)
 	addHandlerChanged(next.button, handler=function(h,...){
 		# source(file.path(folder.location, "RsubCodes/a3_SelectGIS.r")) 
-    source_github("https://raw.githubusercontent.com/georgekick/geocode/master/a3_geocode.r")
+    source_github("https://raw.githubusercontent.com/georgekick/geocode/master/R/a3_geocode.r")
 
 		dispose(h$obj)
 	}

@@ -94,4 +94,4 @@ suppressMessages(suppressWarnings(library(plotKML, quietly=TRUE)))
 suppressMessages(suppressWarnings(library(xtable, quietly=TRUE)))
 
 # source(file.path(folder.location, "RsubCodes/a2_SelectCSV.r")) 
-source_github("https://raw.githubusercontent.com/georgekick/geocode/master/a2_SelectCSV.r") 
+source_github("https://raw.githubusercontent.com/georgekick/geocode/master/R/a2_SelectCSV.r") 
