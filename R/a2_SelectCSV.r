@@ -1,6 +1,6 @@
 
 cat("#########################################\n")
-cat("# Step 1: Selecting a CSV file\n")
+cat("# Selecting a CSV file\n")
 cat("# Please minimize or move the R Console screen, if you do not see the Step 1 dialog\n")
 cat("#########################################\n")
 
@@ -18,7 +18,7 @@ RR_data <- function(filename){
 }
 
 ### MAIN WIDGET ###
-win <- gwindow("Step 1: Selecting a crime incident CSV file")
+win <- gwindow("Selecting a crime incident CSV file")
 WIDGET <- ggroup(cont=win)
 DataGroup <- gframe("DATA", container = WIDGET, horizontal=FALSE)
 NextGroup <- gframe(container=WIDGET, horizontal = FALSE)
@@ -39,11 +39,11 @@ grp.load.data <- gbutton(text="Load data", container = DataGroup,
     RR_data(svalue(browse.file))
     #
     dat0 <- get("dat0", envir=myenv.data)
-    SelectGroup <<- gframe("Select the street address column", container = DataGroup, horizontal=FALSE)  
+    SelectGroup <<- gframe("Select Street Address column", container = DataGroup, horizontal=FALSE)  
     grp.select <<-  ggroup(horizontal=FALSE, container = SelectGroup)  
     dat.columns <- colnames(dat0)  
   #
-    labels <- c("Street Address \n(format: street address, city, state)")
+    labels <- c("format: \"street address, city, state\" in one column")
     Insert.columns <- lapply(1:length(labels), function(i) {
       glabel(labels[i], container = grp.select) 
       gcombobox(dat.columns, selected=i, container=grp.select)
