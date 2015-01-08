@@ -56,6 +56,6 @@ source_github <- function(u) {
 }  
 
 # source_url("https://raw.githubusercontent.com/georgekick/aoristicGUI/master/RsubCodes/a1_LoadLibraries.R", chdir=TRUE)
-source_github("https://raw.githubusercontent.com/georgekick/geocode/master/a1_LoadLibraries.R")
+source_github("https://raw.githubusercontent.com/georgekick/geocode/master/R/a1_LoadLibraries.R")
 
 
