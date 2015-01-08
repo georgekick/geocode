@@ -27,7 +27,7 @@ if (length(address) < as.numeric(geocodeQueryCheck())){
 
   shp.name <- gsub("(.*).csv", ("\\1"), basename(svalue(browse.file)))
   
-  writeOGR(spdf, ".", layer=paste(shp.name, "_geocoded", sep=","), "ESRI Shapefile")
+  writeOGR(spdf, ".", layer=paste(shp.name, "_geocoded", sep=""), "ESRI Shapefile")
 
   
   # ending message ----
