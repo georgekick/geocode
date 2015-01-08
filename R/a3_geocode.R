@@ -13,7 +13,7 @@ cat(paste("# Geocoding", length(address), "cases...\n"))
 cat("#############################################\n")
 
 if (length(address) < as.numeric(geocodeQueryCheck())){
-
+  
   address <- geocode(address)
   data <- cbind(data, address)
 
