@@ -3,7 +3,7 @@ cat("# geocoding addresses...\n")
 cat("#############################################\n")
 
 # read data
-data <- read.table(svalue(browse.file), header=TRUE, sep=",")
+data <- read.csv(svalue(browse.file))
 # select columns
 address <- as.character(data[, c(svalue(address))])
 

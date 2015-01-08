@@ -43,7 +43,7 @@ grp.load.data <- gbutton(text="Load data", container = DataGroup,
     grp.select <<-  ggroup(horizontal=FALSE, container = SelectGroup)  
     dat.columns <- colnames(dat0)  
   #
-    labels <- c("format: \"street address, city, state\" in one column")
+    labels <- c(" ")
     Insert.columns <- lapply(1:length(labels), function(i) {
       glabel(labels[i], container = grp.select) 
       gcombobox(dat.columns, selected=i, container=grp.select)
