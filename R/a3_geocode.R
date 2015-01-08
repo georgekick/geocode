@@ -24,10 +24,12 @@ if (length(address) < as.numeric(geocodeQueryCheck())){
   spdf <- SpatialPointsDataFrame(coords=cbind(address$lon, address$lat), 
                               proj4string=CRS("+init=epsg:4326"),
                               data=data)
+
   shp.name <- gsub("(.*).csv", ("\\1"), basename(svalue(browse.file)))
   
   writeOGR(spdf, ".", layer=paste(shp.name, "_geocoded", sep=","), "ESRI Shapefile")
 
+  
   # ending message ----
 
   alarm()
