@@ -24,18 +24,29 @@ if (length(address) < as.numeric(geocodeQueryCheck())){
   address <- suppressMessages(geocode(address))
   data <- cbind(data, address)
 
-  # output a geocoded table
-  output.file.name <- gsub("(.*).csv", ("\\1"), basename(svalue(browse.file)))
-
-  write.table(data, paste(output.file.name, "_", "_geocoded_", Sys.Date(),".csv", sep=""), col.names=TRUE, row.names=FALSE, sep=",")
-
   # make spatial data frame
   spdf <- SpatialPointsDataFrame(coords=cbind(address$lon, address$lat), 
-                              proj4string=CRS("+init=epsg:4326"),
-                              data=data)
+                                 proj4string=CRS("+init=epsg:4326"),
+                                 data=data)
+  
+  spdf.NAD <- spTransform(spdf, CRS("+init=epsg:2228"))
+  spdf.NAD$Xfeet <- spdf.NAD@coords$coords.x1
+  spdf.NAD$Yfeet <- spdf.NAD@coords$coords.x2
+  
+  # output a geocoded table
+  output.file.name <- gsub("(.*).csv", ("\\1"), basename(svalue(browse.file)))
+  
+  write.table(data, paste(output.file.name, "_", "geocoded_", Sys.Date(),".csv", sep=""), col.names=TRUE, row.names=FALSE, sep=",")
 
-  writeOGR(spdf, ".", layer=paste(output.file.name, "_geocoded", sep=""), "ESRI Shapefile")
+  # output spatial file
+  
+  # create an output folder for shape files
+  dir.create(file.path(getwd(), "shapefiles"), showWarnings = FALSE)
+  
+  writeOGR(spdf, "shapefiles", layer=paste(output.file.name, "_geocoded_WGS", sep=""), "ESRI Shapefile")
 
+  writeOGR(spdf.NAD, "shapefiles", layer=paste(output.file.name, "_geocoded_NAD", sep=""), "ESRI Shapefile")
+  
   
   # ending message ----
 

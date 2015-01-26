@@ -14,8 +14,8 @@ RR_data <- function(filename){
     path <- dirname(filename)
     setwd(path)
     # use different functions for xls or csv
-    if (grepl(filename, ".csv$")){
-    dat0 <- read.csv(filename,header=TRUE)
+    if (grepl(filename, ".csv")){
+    dat0 <- read.csv(filename)
     } else {
     dat0 <- read.xls(filename) 
     }
