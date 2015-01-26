@@ -22,6 +22,7 @@ RR_data <- function(filename){
     assign("dat0", dat0, envir=myenv.data)
 }
 
+
 ### MAIN WIDGET ###
 win <- gwindow("Selecting a crime incident CSV file")
 WIDGET <- ggroup(cont=win)
