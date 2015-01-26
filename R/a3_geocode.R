@@ -3,7 +3,7 @@ cat("# geocoding addresses...\n")
 cat("#############################################\n")
 
 # read data
-if (grepl(svalue(browse.file), ".csv$")){
+if (grepl(svalue(browse.file), ".csv")){
   data <- read.csv(svalue(browse.file))
 } else {
   data <- read.xls(svalue(browse.file)) 
@@ -30,8 +30,8 @@ if (length(address) < as.numeric(geocodeQueryCheck())){
                                  data=data)
   
   spdf.NAD <- spTransform(spdf, CRS("+init=epsg:2228"))
-  spdf.NAD$Xfeet <- spdf.NAD@coords$coords.x1
-  spdf.NAD$Yfeet <- spdf.NAD@coords$coords.x2
+  spdf.NAD@dat$Xfeet <- spdf.NAD@coords$coords.x1
+  spdf.NAD@data$Yfeet <- spdf.NAD@coords$coords.x2
   
   # output a geocoded table
   output.file.name <- gsub("(.*).csv", ("\\1"), basename(svalue(browse.file)))
