@@ -13,7 +13,12 @@ myenv.data <- new.env()
 RR_data <- function(filename){ 
     path <- dirname(filename)
     setwd(path)
+    # use different functions for xls or csv
+    if (grepl(svalue(browse.file), ".csv$"){
     dat0 <- read.csv(filename,header=TRUE)
+    } else {
+    dat0 <- read.xls(filename) 
+    }
     assign("dat0", dat0, envir=myenv.data)
 }
 
@@ -28,7 +33,7 @@ addSpring(NextGroup)
 grp.file <- ggroup(horizontal=FALSE, container = DataGroup)
 lbl.file <- glabel("File: ", container = grp.file)
 browse.file <- gfilebrowse(text = "", container = grp.file, quote=FALSE, 
-								filter = list("csv files" = list(patterns = c("*.csv")),
+								filter = list("csv/xls files" = list(patterns = c("*.csv", "*.xls$")),
                                        "All files" = list(patterns = c("*")) 
 								))
 
