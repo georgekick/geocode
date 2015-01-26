@@ -29,7 +29,8 @@ if (length(address) < as.numeric(geocodeQueryCheck())){
                                  proj4string=CRS("+init=epsg:4326"),
                                  data=data)
   
-  spdf.NAD <- spTransform(spdf, CRS("+init=epsg:2228"))
+  #spdf.NAD <- spTransform(spdf, CRS("+init=epsg:2228"))
+  spdf.NAD <- spTransform(spdf, CRS("+init=esri:102644"))
   spdf.NAD@data$Xfeet <- spdf.NAD@coords[,1]
   spdf.NAD@data$Yfeet <- spdf.NAD@coords[,2]
   
