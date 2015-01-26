@@ -4,9 +4,9 @@ cat("#############################################\n")
 
 # read data
 if (grepl(svalue(browse.file), ".csv$")){
-  data <- read.csv(filename)
+  data <- read.csv(svalue(browse.file))
 } else {
-  data <- read.xls(filename) 
+  data <- read.xls(svalue(browse.file)) 
 }
 # data <- read.csv(svalue(browse.file))
 
