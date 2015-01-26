@@ -1,6 +1,6 @@
 
 cat("#########################################\n")
-cat("# Selecting a CSV file\n")
+cat("# Selecting a data file\n")
 cat("# Please minimize or move the R Console screen, if you do not see the Step 1 dialog\n")
 cat("#########################################\n")
 
@@ -24,7 +24,7 @@ RR_data <- function(filename){
 
 
 ### MAIN WIDGET ###
-win <- gwindow("Selecting a crime incident CSV file")
+win <- gwindow("Selecting a crime incident file")
 WIDGET <- ggroup(cont=win)
 DataGroup <- gframe("DATA", container = WIDGET, horizontal=FALSE)
 NextGroup <- gframe(container=WIDGET, horizontal = FALSE)
