@@ -34,7 +34,7 @@ addSpring(NextGroup)
 grp.file <- ggroup(horizontal=FALSE, container = DataGroup)
 lbl.file <- glabel("File: ", container = grp.file)
 browse.file <- gfilebrowse(text = "", container = grp.file, quote=FALSE, 
-								filter = list("csv/xls files" = list(patterns = c("*.csv", "*.xls$")),
+								filter = list("csv/xls files" = list(patterns = c("*.csv", "*.xls")),
                                        "All files" = list(patterns = c("*")) 
 								))
 
