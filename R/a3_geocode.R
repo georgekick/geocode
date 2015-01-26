@@ -3,7 +3,13 @@ cat("# geocoding addresses...\n")
 cat("#############################################\n")
 
 # read data
-data <- read.csv(svalue(browse.file))
+if (grepl(svalue(browse.file), ".csv$")){
+  data <- read.csv(filename)
+} else {
+  data <- read.xls(filename) 
+}
+# data <- read.csv(svalue(browse.file))
+
 # select columns
 address <- as.character(data[, c(svalue(address))])
 
