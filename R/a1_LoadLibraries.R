@@ -12,7 +12,8 @@ cat("#############################\n")
     "rgdal", 
     "gWidgets",
 	  "gWidgetsRGtk2",
-    "gdata"
+    "gdata",
+    "tools"
   ) 
 
   new.packages <- required.packages[!(required.packages %in% installed.packages()[,"Package"])]
@@ -27,6 +28,7 @@ suppressMessages(suppressWarnings(library(rgdal, quietly=TRUE)))
 suppressMessages(suppressWarnings(library(gWidgets, quietly=TRUE)))
 suppressMessages(suppressWarnings(library(gWidgetsRGtk2, quietly=TRUE)))
 suppressMessages(suppressWarnings(library(gdata, quietly=TRUE)))
+suppressMessages(suppressWarnings(library(tools, quietly=TRUE)))
 options("guiToolkit"="RGtk2")
 
 source_github("https://raw.githubusercontent.com/georgekick/geocode/master/R/a2_SelectCSV.r") 
