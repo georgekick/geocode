@@ -30,8 +30,8 @@ if (length(address) < as.numeric(geocodeQueryCheck())){
                                  data=data)
   
   spdf.NAD <- spTransform(spdf, CRS("+init=epsg:2228"))
-  spdf.NAD@data$Xfeet <- spdf.NAD@coords$coords.x1
-  spdf.NAD@data$Yfeet <- spdf.NAD@coords$coords.x2
+  spdf.NAD@data$Xfeet <- spdf.NAD@coords[,1]
+  spdf.NAD@data$Yfeet <- spdf.NAD@coords[,2]
   
   # output a geocoded table
   output.file.name <- gsub("(.*).csv", ("\\1"), basename(svalue(browse.file)))
