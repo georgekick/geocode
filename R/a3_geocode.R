@@ -33,8 +33,9 @@ if (length(address) < as.numeric(geocodeQueryCheck())){
   spdf.NAD@data$Xfeet <- spdf.NAD@coords[,1]
   spdf.NAD@data$Yfeet <- spdf.NAD@coords[,2]
   
+  data <- spdf.NAD@data
+  
   # output a geocoded table
-  # output.file.name <- gsub("(.*).csv", ("\\1"), basename(svalue(browse.file)))
   output.file.name <- basename(file_path_sans_ext(svalue(browse.file)))
   
   write.table(data, paste(output.file.name, "_", "geocoded_", Sys.Date(),".csv", sep=""), col.names=TRUE, row.names=FALSE, sep=",")
