@@ -45,9 +45,9 @@ if (length(address) < as.numeric(geocodeQueryCheck())){
   # create an output folder for shape files
   dir.create(file.path(getwd(), "shapefiles"), showWarnings = FALSE)
   
-  writeOGR(spdf, "shapefiles", layer=paste(output.file.name, "_geocoded_WGS", sep=""), "ESRI Shapefile")
+  writeOGR(spdf, "shapefiles", layer=paste(output.file.name, "_geocoded_", Sys.Date(), "_WGS", sep=""), "ESRI Shapefile")
 
-  writeOGR(spdf.NAD, "shapefiles", layer=paste(output.file.name, "_geocoded_NAD", sep=""), "ESRI Shapefile")
+  writeOGR(spdf.NAD, "shapefiles", layer=paste(output.file.name, "_geocoded_", Sys.Date(), "_NAD", sep=""), "ESRI Shapefile")
   
   
   # ending message ----
