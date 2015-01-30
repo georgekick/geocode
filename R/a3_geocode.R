@@ -8,8 +8,6 @@ if (grepl(".csv$", svalue(browse.file))){
 } else {
   data <- read.xls(svalue(browse.file)) 
 }
-# data <- read.csv(svalue(browse.file))
-
 
 # select columns
 address <- as.character(data[, c(svalue(address))])
@@ -36,18 +34,18 @@ if (length(address) < as.numeric(geocodeQueryCheck())){
   spdf.NAD@data$Yfeet <- spdf.NAD@coords[,2]
   
   data <- spdf.NAD@data
-  
+
+  # create an output folder
+  dir.create(file.path(getwd(), "shapefiles"), showWarnings = FALSE)
+    
   # output a geocoded table
   output.file.name <- basename(file_path_sans_ext(svalue(browse.file)))
   
-  write.table(data, paste(output.file.name, "_", "geocoded_", Sys.Date(),".csv", sep=""), col.names=TRUE, row.names=FALSE, sep=",")
+  write.table(data, paste("shapefiles/", output.file.name, "_", "geocoded_", Sys.Date(),".csv", sep=""), col.names=TRUE, row.names=FALSE, sep=",")
 
   # output spatial file
   
-  # create an output folder for shape files
-  dir.create(file.path(getwd(), "shapefiles"), showWarnings = FALSE)
-  
-  writeOGR(spdf, "shapefiles", layer=paste(output.file.name, "_geocoded_", Sys.Date(), "_WGS", sep=""), "ESRI Shapefile")
+  #writeOGR(spdf, "shapefiles", layer=paste(output.file.name, "_geocoded_", Sys.Date(), "_WGS", sep=""), "ESRI Shapefile")
 
   writeOGR(spdf.NAD, "shapefiles", layer=paste(output.file.name, "_geocoded_", Sys.Date(), "_NAD", sep=""), "ESRI Shapefile")
   
